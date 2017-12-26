@@ -4,12 +4,6 @@ Types::BookType = GraphQL::ObjectType.define do
   field :title, types.String
   field :publisher, types.String
   field :genre, types.String
-  field :authors do
-    type types[!Types::AuthorType]
-    argument :size, types.Int, default_value: 10
-    resolve -> (book, args, ctx) {
-      book.authors.limit(args[:size])
-    }
-  end
+  field :authors, function: Resolvers::FindAuthor.new(model_class: Author, type: types[Types::AuthorType])
 
 end
