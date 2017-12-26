@@ -4,13 +4,6 @@ Types::QueryType = GraphQL::ObjectType.define do
   # They will be entry points for queries on your schema.
 
   # TODO: remove me
-  field :book do
-    type Types::BookType
-    argument :id, !types.ID
-    description "Find a Book by ID"
-    resolve -> (obj, args, ctx) {
-      Book.find(args[:id])
-    }
-  end
+  field :book, function: Resolvers::FindBook.new(model_class: Book, type: Types::BookType)
 
 end
