@@ -9,7 +9,8 @@ class Resolvers::DeleteBook < GraphQL::Function
 
   def call(obj, args, ctx)
     book = @model_class.find_by_id(args[:id])
-    book.destroy! unless book.nil?
-  end
+    book.destroy!
 
+    rescue GraphQL::ExecutionError.new("Invalid ID: #{args[:id]}")
+  end
 end
