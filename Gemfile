@@ -13,7 +13,8 @@ gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 gem 'graphql',  '1.7.7'
-gem 'faker'
+gem 'faker',  '1.8.5'
+gem 'bcrypt', '3.1.11'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'

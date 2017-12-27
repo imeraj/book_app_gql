@@ -5,13 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user = User.create!(name: "Meraj",
+            email: "meraj.enigma@gmail.com",
+         password: "password")
+
 50.times do
      title = Faker::Book.title
      publisher = Faker::Book.publisher
      genre = Faker::Book.genre
-     book = Book.create!(title: title,
-                     publisher: publisher,
-                         genre: genre)
+     book = user.books.create!(title: title,
+                           publisher: publisher,
+                               genre: genre)
     10.times do |i|
       name = Faker::Name.name
       address = Faker::Address.street_address
