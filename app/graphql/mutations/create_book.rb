@@ -9,11 +9,12 @@ class Resolvers::CreateBook < GraphQL::Function
     @type = type
   end
 
-  def call(_obj, args, _ctx)
+  def call(_obj, args, ctx)
     ActiveRecord::Base.transaction do
       book = @model_class.create!(title: args[:book][:title],
                      publisher: args[:book][:publisher],
-                         genre: args[:book][:genre])
+                         genre: args[:book][:genre],
+                          user: ctx[:current_user])
 
       authors = args[:book][:authors]
       authors.each do |author|

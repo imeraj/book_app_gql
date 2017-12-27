@@ -9,8 +9,8 @@ class Resolvers::DeleteBook < GraphQL::Function
 
   def call(obj, args, ctx)
     book = @model_class.find_by_id(args[:id])
+    return unless book
+    return unless ctx[:current_user] and ctx[:current_user].id == book.user_id
     book.destroy!
-
-    rescue GraphQL::ExecutionError.new("Invalid ID: #{args[:id]}")
   end
 end
