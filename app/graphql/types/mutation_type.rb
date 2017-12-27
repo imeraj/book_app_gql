@@ -1,7 +1,7 @@
-require_relative "../mutations/create_book"
-require_relative "../mutations/delete_book"
-require_relative "../mutations/create_user"
-require_relative "../mutations/sign_in_user"
+# require_relative "../mutations/create_book"
+# require_relative "../mutations/delete_book"
+# require_relative "../mutations/create_user"
+# require_relative "../mutations/sign_in_user"
 
 Types::MutationType = GraphQL::ObjectType.define do
   name "Mutation"
